@@ -6,12 +6,7 @@
 <link rel="icon" href="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/Untitled_Artwork%20230.png?raw=true">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="manifest" href="manifest.json">
-  <script>
-      if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
-  
-   </script>
+
 <title>Play Music</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
@@ -173,6 +168,13 @@ img {
 }
 </style>
 <script>
+  
+      if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+  
+
+  
   function c(url) {
     document.body.style.animation = "Bodyyy 0.8s";
     setTimeout(() => {
