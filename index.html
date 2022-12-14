@@ -4,10 +4,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <link rel="icon" href="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/Untitled_Artwork%20230.png?raw=true">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="manifest.json">
+<title>Play Music</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#2b2b2b">
-  <title>Play Music</title>
+<link rel="manifest" href="manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+
+ </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 body {
@@ -147,12 +153,108 @@ img {
     from {top: 50px; opacity: 0;}
     to {top: 0px; opacity: 1;}
 }
+.loader {
+  --icon-count: 3;
+  --inner-height: 4em;
+  --ratio: 2/3;
+ /* Customizable */
+  --period: 1s;
+ /* Customizable */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--inner-height);
+  width: calc(var(--inner-height) * var(--ratio) * var(--icon-count));
+}
 
+.loader .icon {
+  width: calc(100% / var(--icon-count));
+  height: calc(100% * var(--ratio));
+  animation: loader-bounce02 var(--period) infinite linear;
+}
 
+/*
+ * animation delay = (n - 1) / steps * period
+ */
+
+.loader .icon:nth-of-type(2) {
+  animation-delay: calc(1 / 5 * var(--period));
+}
+
+.loader .icon:nth-of-type(3) {
+  animation-delay: calc(2 / 5 * var(--period));
+}
+
+@keyframes loader-bounce02 {
+  20% {
+    /* Raise */
+    transform: translateY(calc(-50% * (1 - var(--ratio))));
+  }
+
+  40% {
+    /* Lower */
+    transform: translateY(calc(50% * (1 - var(--ratio))));
+  }
+
+  60% {
+    /* Keep centered */
+    transform: translateY(0);
+  }
+
+  80% {
+    /* Keep centered */
+    transform: translateY(0);
+  }
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 988;
+  background-color: rgb(104, 104, 104);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: top;
+}
+
+@keyframes loaded {
+  from {transition: 0.6s; opacity: 1;}
+  to {opacity: 0;}
+}
 
 </style>
 </head>
 <body>
+
+<div id="loading-screen" class="wrapper">
+  <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif; top: 375px; position: absolute;">Loading...</h2>
+  <div class="loader">
+    
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+ 
+</div>
+</div>
 
 <div class="topnav">
   <a  class="active" href="#element" >Home</a>
@@ -168,66 +270,99 @@ img {
 }
 </style>
 <script>
-  
-      if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
-  
-
-  
   function c(url) {
     document.body.style.animation = "Bodyyy 0.8s";
     setTimeout(() => {
+      console.log(url);
+  
       document.body.style.right = "2500px";
     }, 650);
     setTimeout(() => {
+   
       window.location = url;
+      
     }, 700);
   }
 </script>
+
+
+
 <h2 style="text-align: center;">Choose A Instrument</h2>
 
 <div onclick="c('./trombone.html')" style=" cursor: pointer; margin: 10px;  float: left;">
     <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Trombone</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trombone.jpeg?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trombone.avif?raw=true" />
 </div>
 
 <div onclick="c('./trumpet.html')" style=" cursor: pointer; margin: 10px;  float: left;">
     <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Trumpet</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trumpet.webp?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trumpet.avif?raw=true" />
 </div>
 
 <div onclick="c('./tuba.html')" style=" cursor: pointer;  margin: 10px;  float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Tuba</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/tuba.jpeg?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/tuba.avif?raw=true" />
 </div>
 
 <div onclick="alert('Error No Page Found For - French horn - ')" style=" cursor: pointer; margin: 10px;  float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">French horn</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/french.jpeg?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/french.avif?raw=true" />
 </div>
 
 <div onclick="c('./flute.html')" style=" cursor: pointer; margin: 10px; float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Flute</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/flute.png?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/flute.avif?raw=true" />
 </div>
 
 <div onclick="c('./clarinet.html')" style=" cursor: pointer; margin: 10px; float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Clarinet</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/clar.jpeg?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/clar.avif?raw=true" />
 </div>
 
 <div onclick="c('./saxophone.html')" style=" cursor: pointer; margin: 10px; float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Saxophone</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/sax.jpeg?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/sax.avif?raw=true" />
 </div>
 
 <div onclick="c('./drums.html')" style=" cursor: pointer; margin: 10px; float: left;">
   <h3 style="position: absolute; margin-top: 220px; margin-right: 150px; color: #ddd;">Drums</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/Untitled_Artwork%20231.png?raw=true" />
+<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/drums.avif?raw=true" />
 </div>
 
+<audio id="hello" style="display: none;">
+  <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+</audio>
+<script>
+  
+  var loadeddd = document.getElementById('hello');
+
+    loadeddd.muted = true;
 
 
+  var interval = 400;
+
+var timer = window.setInterval(function(){
+ 
+  if (loadeddd.readyState == 4) {
+    
+    document.getElementById('loading-screen').style.animation = "loaded 0.8s";
+    setTimeout(() => {
+      
+   
+    document.getElementById('loading-screen').style.display = "none"
+  }, 800);
+
+   window.clearInterval(timer);
+  
+   } else {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+console.log('mobile')
+loadeddd.load();
+    } else {
+ console.log('Not loaded')
+    }
+   }		
+}, interval);
+</script>
 </body>
 </html>
