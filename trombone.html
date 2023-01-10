@@ -370,11 +370,109 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #2d2d2d; 
 }
+.loader {
+  --icon-count: 3;
+  --inner-height: 4em;
+  --ratio: 2/3;
+ /* Customizable */
+  --period: 1s;
+ /* Customizable */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--inner-height);
+  width: calc(var(--inner-height) * var(--ratio) * var(--icon-count));
+}
 
+.loader .icon {
+  width: calc(100% / var(--icon-count));
+  height: calc(100% * var(--ratio));
+  animation: loader-bounce02 var(--period) infinite linear;
+}
+
+/*
+ * animation delay = (n - 1) / steps * period
+ */
+
+.loader .icon:nth-of-type(2) {
+  animation-delay: calc(1 / 5 * var(--period));
+}
+
+.loader .icon:nth-of-type(3) {
+  animation-delay: calc(2 / 5 * var(--period));
+}
+
+@keyframes loader-bounce02 {
+  20% {
+    /* Raise */
+    transform: translateY(calc(-50% * (1 - var(--ratio))));
+  }
+
+  40% {
+    /* Lower */
+    transform: translateY(calc(50% * (1 - var(--ratio))));
+  }
+
+  60% {
+    /* Keep centered */
+    transform: translateY(0);
+  }
+
+  80% {
+    /* Keep centered */
+    transform: translateY(0);
+  }
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 988;
+  background-color: rgb(104, 104, 104);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: top;
+}
+
+@keyframes loaded {
+  from {transition: 0.6s; opacity: 1;}
+  to {opacity: 0;}
+}
 
 </style>
 </head>
 <body>
+
+<div id="loading-screen" class="wrapper">
+  <h2 id="loading-text" style="text-align: center; font-family: Arial, Helvetica, sans-serif; top: 375px; position: absolute;">Loading...</h2>
+  <h2 id="loading-info" style="text-align: center; font-family: Arial, Helvetica, sans-serif; top: 400px; position: absolute;"></h2>
+  <div class="loader">
+    
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+    <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 100 100">
+            <ellipse transform="rotate(-21.283 49.994 75.642)" cx="50" cy="75.651" rx="19.347" ry="16.432" fill="currentColor"></ellipse>
+            <path fill="currentColor" d="M58.474 7.5h10.258v63.568H58.474z"></path>
+        </svg>
+    </span>
+ 
+</div>
+</div>
   <script>
     function c(url) {
       document.body.style.animation = "Bodyyy 0.8s";
@@ -396,27 +494,87 @@ footer {
 <h1 style="text-align: center;">Videos</h1>
 <h3 style="text-align: center;">Trombone Slide Position Chart (Bass Clef in C)</h3>
 <video width="100%" height="320" controls>
-  <source src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/vid/Trombone%20Slide%20Position%20Chart%20(Bass%20Clef%20in%20C).mp4?raw=true" type="video/mp4">
+  <source  src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/vid/Trombone%20Slide%20Position%20Chart%20(Bass%20Clef%20in%20C).mp4?raw=true" type="video/mp4">
 </video>
 
 <h3 style="text-align: center;">Trombone Lesson 1 Assembly, Disassembly, & How to Hold</h3>
 
-  <iframe width="100%" height="320" src="https://www.youtube.com/embed/z-Yj_jLNKKg" title="Trombone Lesson 1: Assembly, Disassembly, & How to Hold" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="320" id="1" src="" title="Trombone Lesson 1: Assembly, Disassembly, & How to Hold" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
   <h3 style="text-align: center;">Playing High Notes on Brass Instruments  How to Make it Feel Easy</h3>
-  <iframe width="100%" height="320" src="https://www.youtube.com/embed/TGKM_TZNZlc" title="Playing High Notes on Brass Instruments | How to Make it Feel Easy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="320" id="2" src="" title="Playing High Notes on Brass Instruments | How to Make it Feel Easy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
   <h3 style="text-align: center;">Embouchure How Our Corners Function As Brass Players</h3>
 
-  <iframe width="100%" height="320" src="https://www.youtube.com/embed/CjH-u58qMZI" title="Embouchure: How Our Corners Function As Brass Players" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="320" id="3" src="" title="Embouchure: How Our Corners Function As Brass Players" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
   <h3 style="text-align: center;">To Buzz or Not To Buzz Which is More Efficient</h3>
 
-  <iframe width="100%" height="320" src="https://www.youtube.com/embed/T812WgHAPwg" title="To Buzz or Not To Buzz? Which is More Efficient?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="320" id="4" src="" title="To Buzz or Not To Buzz? Which is More Efficient?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   
   <h3 style="text-align: center;">Trombone Lip Slurs for Beginners - Play Along</h3>
 
-  <iframe width="100%" height="320" src="https://www.youtube.com/embed/wQdHFhhBTvU" title="Trombone Lip Slurs for Beginners - Play Along" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="100%" height="320" id="5" src="https://www.youtube.com/embed/wQdHFhhBTvU" title="Trombone Lip Slurs for Beginners - Play Along" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
+<script>
+
+var loaf = setInterval(() => {
+  console.log("Resources being loaded by the window:");
+  var resources = performance.getEntriesByType("resource");
+  resources.forEach(function(resource) {
+    document.getElementById('loading-info').innerHTML = "Loading - " + resource.name;
+    console.log(resource.name);
+  });
+}, 1);
+ 
+
+
+
+
+var one = document.getElementById('1'); 
+var two = document.getElementById('2'); 
+var three = document.getElementById('3'); 
+var four = document.getElementById('4'); 
+var five = document.getElementById('5'); 
+
+console.log('starting optimized loading')
+  one.src = 'https://www.youtube.com/embed/z-Yj_jLNKKg';
+  setTimeout(() => {
+    two.src = 'https://www.youtube.com/embed/TGKM_TZNZlc';
+    console.log('Loading 2nd Frame')
+  }, 500);
+  setTimeout(() => {
+    three.src = 'https://www.youtube.com/embed/CjH-u58qMZI';
+    console.log('loading 3rd frame');
+  }, 1000);
+  setTimeout(() => {
+    four.src = 'https://www.youtube.com/embed/T812WgHAPwg';
+    console.log('loading 4th frame');
+  }, 1100);
+  setTimeout(() => {
+    five.src = 'https://www.youtube.com/embed/wQdHFhhBTvU';
+    console.log('loading 5th frame');
+  }, 1140);
+
+var interval = 400;
+
+var timer = window.setInterval(function(){
+ 
+
+
+  if (document.readyState === 'complete') {
+        
+    document.getElementById('loading-screen').style.animation = "loaded 0.8s";
+    setTimeout(() => {
+      
+      clearInterval(loaf);
+   //document.getElementById('loading-text').innerHTML = ""
+    document.getElementById('loading-screen').style.display = "none"
+    }, 800);
+    window.clearInterval(timer);
+    }
+   		
+}, interval);
+</script>
   </html>
