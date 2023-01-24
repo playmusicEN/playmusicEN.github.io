@@ -237,41 +237,17 @@ img {
 }
 
 @keyframes loaded {
-  from {transition: 0.6s; opacity: 1;}
-  to {opacity: 0;}
+  from {transition: 0.6s; opacity: 0.5;}
+  to {opacity: 1;}
 }
 
 </style>
 </head>
 <body>
 
-  <script>
-     let randomNumber = parseInt(Math.random() * (3 - 0 + 1) + 0);
-     console.log(randomNumber);
-  window.onload = function() {
-   
-if (randomNumber === 1) {
-  document.getElementById('err').style.display = 'none';
-} else if (randomNumber === 2) {
-  document.getElementById('err').style.display = 'none';
-} else if (randomNumber === 3) {
-  document.getElementById('err').style.display = 'none';
-} else {
-  document.getElementById('err').style.display = 'block';
-}
-
-  };
-</script>
-
-  <div id="err" style="display: none;" class="wrapperr">
-    <h2  style="text-align: center; font-family: Arial, Helvetica, sans-serif;  position: absolute;">The Page Has Crashed ):</h2>
-
-    <h2  style="text-align: center; cursor: pointer; color: #000000;  font-family: Arial, Helvetica, sans-serif; top: 100px; position: absolute;"><a onclick="location.reload();"> > Reload < </a></h2>
- 
-  </div>
 
 <div id="loading-screen" class="wrapper">
-  <h2 id="loading-text" style="text-align: center; font-family: Arial, Helvetica, sans-serif; top: 375px; position: absolute;">Loading...</h2>
+  <h2 id="loading-text" style="text-align: center; font-family: Arial, Helvetica, sans-serif; top: 375px; position: absolute;">Redirecting To Document...</h2>
   <div class="loader">
     
     <span class="icon">
@@ -296,79 +272,6 @@ if (randomNumber === 1) {
 </div>
 </div>
 
-<div class="topnav">
-  <a  class="active" href="#element" >Home</a>
-  <a onclick="c('./metronome.html')">Metronome</a>
-  <a onclick="c('./record.html')">Record</a>
-  <a onclick="c('./about.html')">About</a>
-
-</div>
-<style>
-  @keyframes Bodyyy {
-    from {right: 0px; opacity: 1;}
-    to {right: 1500px; opacity: 0;}
-}
-</style>
-<script>
-  function c(url) {
-    document.body.style.animation = "Bodyyy 0.8s";
-    setTimeout(() => {
-      console.log(url);
-  
-      document.body.style.right = "2500px";
-    }, 650);
-    setTimeout(() => {
-   
-      window.location = url;
-      
-    }, 700);
-  }
-</script>
-
-
-
-
-<h2 style="text-align: center;">Choose A Instrument</h2>
-
-<div onclick="c('./trombone.html')" style=" cursor: pointer; margin: 10px;  float: left;">
-    <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Trombone</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trombone.avif?raw=true" />
-</div>
-
-<div onclick="c('./trumpet.html')" style=" cursor: pointer; margin: 10px;  float: left;">
-    <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Trumpet</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/trumpet.avif?raw=true" />
-</div>
-
-<div onclick="c('./tuba.html')" style=" cursor: pointer;  margin: 10px;  float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Tuba</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/tuba.avif?raw=true" />
-</div>
-
-<div onclick="alert('Error No Page Found For - French horn - ')" style=" cursor: pointer; margin: 10px;  float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">French horn</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/french.avif?raw=true" />
-</div>
-
-<div onclick="c('./flute.html')" style=" cursor: pointer; margin: 10px; float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Flute</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/flute.avif?raw=true" />
-</div>
-
-<div onclick="c('./clarinet.html')" style=" cursor: pointer; margin: 10px; float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Clarinet</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/clar.avif?raw=true" />
-</div>
-
-<div onclick="c('./saxophone.html')" style=" cursor: pointer; margin: 10px; float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px;">Saxophone</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/sax.avif?raw=true" />
-</div>
-
-<div onclick="c('./drums.html')" style=" cursor: pointer; margin: 10px; float: left;">
-  <h3 style="position: absolute; margin-top: 220px; margin-right: 150px; color: #ddd;">Drums</h3>
-<img style=" border-radius: 15px; width: 250px; height: 250px;" src="https://github.com/playmusicEN/playmusicEN.github.io/blob/main/p/drums.avif?raw=true" />
-</div>
 
 
 <script>
@@ -376,25 +279,16 @@ if (randomNumber === 1) {
 
 
 
-  var interval = 400;
 
-var timer = window.setInterval(function(){
+
  
-
-
-  if (document.readyState === 'complete') {
-        
     document.getElementById('loading-screen').style.animation = "loaded 0.8s";
     setTimeout(() => {
-      
-
-   //document.getElementById('loading-text').innerHTML = ""
-    document.getElementById('loading-screen').style.display = "none"
-    }, 800);
+      window.location= "https://playmusicen.github.io/steps/steps.pdf"
+    }, 3500);
     window.clearInterval(timer);
-    }
-   		
-}, interval);
+    
+
 </script>
 </body>
 </html>
